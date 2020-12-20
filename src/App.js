@@ -1,24 +1,24 @@
-import logo from './logo.svg';
+import HeaderComponent from './components/Layout/Header'
+import FooterComponent from './components/Layout/Footer'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import DashboardComponent from './components/Dashboard';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+import AddPatient from "./components/patients/AddPatient"
+import store from './store';
+import { Provider } from 'react-redux';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+        <Router>
+          <HeaderComponent />
+          <Route exact path="/" component={DashboardComponent}/>
+          <Route exact path="/dashboard" component={DashboardComponent}/>
+          <Route exact path="/addPatient" component={AddPatient}/>
+          <FooterComponent />
+        </Router>
+    </Provider>
   );
 }
 
