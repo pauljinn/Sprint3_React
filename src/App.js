@@ -7,6 +7,7 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 import AddPatient from "./components/patients/AddPatient"
 import store from './store';
 import { Provider } from 'react-redux';
+import GetPatient from "./components/patients/GetPatient"
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route exact path="/" component={DashboardComponent}/>
           <Route exact path="/dashboard" component={DashboardComponent}/>
           <Route exact path="/addPatient" component={AddPatient}/>
+          <Route exact path="/getPatient" component={GetPatient}/>
           <FooterComponent />
         </Router>
     </Provider>

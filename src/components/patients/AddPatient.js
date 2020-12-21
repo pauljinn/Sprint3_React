@@ -11,9 +11,18 @@ class AddPatient extends Component {
             patientIdentifier:"",
             patientAge:"",
             phoneNumber:"",
-            patientAddress:""
+            patientAddress:"",
+            errors:{}
         }
         //this.onChange=this.onChange.bind(this);
+    }
+
+    // life cycle hook
+   componentWillReceiveProps(nextProps) {
+       console.log("--------componentWillReceiveProps : Called----------");
+        if (nextProps.errors) {
+        this.setState({ errors: nextProps.errors });
+        }
     }
 
     onChange=(event)=>{
@@ -67,18 +76,19 @@ class AddPatient extends Component {
                            
                             <div className="form-group">
                                 <input 
-                                    type="text"
-                                    pattern="[0-9]{2}"
+                                    type="number"
                                     className="form-control form-control-lg" 
                                     placeholder="Patient Age" 
                                     name="patientAge" 
                                     onChange={this.onChange}
                                     value={this.state.patientAge}
+                                    min="1"
+                                    max="100"
                                     />
                             </div>
                             <div className="form-group">
                                 <input 
-                                    type="text" 
+                                    type="tel" 
                                     pattern="[6-9][0-9]{9}"
                                     className="form-control form-control-lg" 
                                     name="phoneNumber" 
@@ -108,7 +118,12 @@ class AddPatient extends Component {
 }
 
 AddPatient.propTypes = {
-    createPatient:PropTypes.func.isRequired
+    createPatient:PropTypes.func.isRequired,
+    errors:PropTypes.object.isRequired
 }
 
-export default connect(null,{createPatient})(AddPatient);
+const mapStateToProps = state => ({
+    errors: state.errors
+});
+
+export default connect(mapStateToProps,{createPatient})(AddPatient);
