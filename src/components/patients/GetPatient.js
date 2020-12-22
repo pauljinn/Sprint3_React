@@ -20,6 +20,8 @@ class GetPatientComponent extends Component{
         return (
             <div class="container">
                 <br/>
+                <h2 class="text-uppercase text-info"><center>All Patient Details</center></h2>
+                <hr></hr>
                 <table class="table table-bordered table-striped table-hover table-lg">
                     <tr>
                         <th>Patient Identifier</th>

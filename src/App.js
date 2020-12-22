@@ -15,7 +15,6 @@ function App() {
         <Router>
           <HeaderComponent />
           <Route exact path="/" component={DashboardComponent}/>
-          <Route exact path="/dashboard" component={DashboardComponent}/>
           <Route exact path="/addPatient" component={AddPatient}/>
           <Route exact path="/getPatient" component={GetPatient}/>
           <FooterComponent />
